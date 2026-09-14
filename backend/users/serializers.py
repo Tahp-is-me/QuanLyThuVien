@@ -11,6 +11,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             'contact': {'required': False, 'allow_null': True, 'allow_blank': True},
         }
 
+
     def create(self, validated_data):
         user = User.objects.create(
             username=validated_data['username'],
