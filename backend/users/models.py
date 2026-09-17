@@ -7,7 +7,6 @@ class User(models.Model):
         ('reader', 'Reader'),
     )
 
-
     username = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=255)
     name = models.CharField(max_length=100, null=True, blank=True)

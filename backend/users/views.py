@@ -32,7 +32,6 @@ class LoginView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
 class UserListView(APIView):
     def get(self, request):
         role = request.query_params.get('role', None)
