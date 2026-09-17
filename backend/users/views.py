@@ -1,10 +1,16 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserRegisterSerializer, UserLoginSerializer, UserListSerializer
-
-
+from .serializers import (
+    UserRegisterSerializer, 
+    UserLoginSerializer, 
+    UserListSerializer,
+    UserUpdateProfileSerializer,
+    ChangePasswordSerializer
+)
 from .models import User
+from .permissions import IsAdminRole, IsAuthenticatedCustom
+from django.contrib.auth.hashers import make_password
 
 class RegisterView(APIView):
     def post(self, request):
@@ -32,7 +38,42 @@ class LoginView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticatedCustom]
+
+    def get(self, request):
+        user = request.custom_user
+        serializer = UserListSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request):
+        user = request.custom_user
+        serializer = UserUpdateProfileSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                "message": "Cập nhật thông tin cá nhân thành công!",
+                "user": UserListSerializer(user).data
+            }, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ChangePasswordView(APIView):
+    permission_classes = [IsAuthenticatedCustom]
+
+    def post(self, request):
+        user = request.custom_user
+        serializer = ChangePasswordSerializer(data=request.data, context={'user': user})
+        if serializer.is_valid():
+            user.password = make_password(serializer.validated_data['new_password'])
+            user.save()
+            return Response({"message": "Đổi mật khẩu thành công!"}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class UserListView(APIView):
+    permission_classes = [IsAdminRole]
+
     def get(self, request):
         role = request.query_params.get('role', None)
         is_public = request.query_params.get('is_public', None)
@@ -49,6 +90,8 @@ class UserListView(APIView):
 
 
 class ToggleUserStatusView(APIView):
+    permission_classes = [IsAdminRole]
+
     def put(self, request, pk):
         try:
             user = User.objects.get(pk=pk)
@@ -66,6 +109,8 @@ class ToggleUserStatusView(APIView):
 
 
 class ChangeUserRoleView(APIView):
+    permission_classes = [IsAdminRole]
+
     def put(self, request, pk):
         try:
             user = User.objects.get(pk=pk)
@@ -83,3 +128,15 @@ class ChangeUserRoleView(APIView):
             "message": f"Cập nhật quyền thành công! Vai trò mới: {new_role}",
             "user": UserListSerializer(user).data
         }, status=status.HTTP_200_OK)
+
+
+class UserDetailView(APIView):
+    permission_classes = [IsAdminRole]
+
+    def get(self, request, pk):
+        try:
+            user = User.objects.get(pk=pk)
+            serializer = UserListSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response({"error": "Không tìm thấy người dùng."}, status=status.HTTP_404_NOT_FOUND)
