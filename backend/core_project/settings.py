@@ -1,9 +1,5 @@
 import os
 from pathlib import Path
-from dotenv import load_dotenv
-
-# Tải biến môi trường từ file .env
-load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -66,11 +62,11 @@ ASGI_APPLICATION = 'core_project.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'system_library'),
-        'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
-        'PORT': os.getenv('DB_PORT', '3306'),
+        'NAME': 'system_library',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             'charset': 'utf8mb4',
