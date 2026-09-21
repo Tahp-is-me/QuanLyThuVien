@@ -1,5 +1,9 @@
 import os
 from pathlib import Path
+from django.db.backends.mysql import base
+
+# Bypass kiểm tra phiên bản MySQL
+base.DatabaseWrapper.check_database_version_supported = lambda self: None
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -9,9 +13,9 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
-#AUTH_USER_MODEL = 'users.User'
+# Bỏ comment nếu dùng Custom User trong app users
+# AUTH_USER_MODEL = 'users.User'
 
-# 1. Đăng ký các ứng dụng
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -20,14 +24,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third party
+    'corsheaders',
     'rest_framework',
 
+    # Local apps
     'users',
     'books',
     'transactions',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # Đặt ở đầu tiên
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,10 +63,8 @@ TEMPLATES = [
     },
 ]
 
-# Cấu hình ASGI thay cho WSGI
 ASGI_APPLICATION = 'core_project.asgi.application'
 
-# 2. Cấu hình Database MySQL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -74,7 +80,6 @@ DATABASES = {
     }
 }
 
-# 3. Cấu hình REST Framework mặc định
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
@@ -87,7 +92,23 @@ REST_FRAMEWORK = {
     ],
 }
 
-# Cấu hình Ngôn ngữ & Múi giờ
+# Cấu hình CORS cho ReactJS
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+]
+
+# Tránh lỗi CSRF khi gửi API từ React
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+]
+
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Ho_Chi_Minh'
 USE_I18N = True
@@ -95,7 +116,3 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-from django.db.backends.mysql import base
-base.DatabaseWrapper.check_database_version_supported = lambda self: None
