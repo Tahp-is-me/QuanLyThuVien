@@ -1,5 +1,12 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import BookViewSet, AuthorViewSet, CategoryViewSet
+
+router = DefaultRouter()
+router.register(r'authors', AuthorViewSet, basename='author')
+router.register(r'categories', CategoryViewSet, basename='category')
+router.register(r'books', BookViewSet, basename='book')
 
 urlpatterns = [
-    # Danh sách URL API cho module books
+    path('', include(router.urls)),
 ]
