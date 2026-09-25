@@ -52,7 +52,7 @@ class TransactionListCreateView(APIView):
     # 6. GET /api/transactions/ : Staff/Admin xem toàn bộ phiếu mượn
     def get(self, request):
         status_param = request.query_params.get('status', None)
-        queryset = Transaction.objects.all().order_by('-id')
+        queryset = Transaction.objects.all().order_by('id')
         
         if status_param:
             queryset = queryset.filter(status=status_param)
