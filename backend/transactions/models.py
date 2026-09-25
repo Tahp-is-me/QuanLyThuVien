@@ -13,7 +13,7 @@ class Transaction(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, db_column='user_id', related_name='transactions')
-    borrow_date = models.DateField(null=True, blank=True)  # <-- Bỏ auto_now_add=True, thêm null=True, blank=True
+    borrow_date = models.DateField(null=True, blank=True)
     due_date = models.DateField(null=True, blank=True)
     return_date = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')

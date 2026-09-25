@@ -35,8 +35,8 @@ class TransactionListCreateView(APIView):
         with db_transaction.atomic():
             trans = Transaction.objects.create(
                 user_id=user_id,
-                borrow_date=today,             # Truyền ngày hiện tại để tránh NULL
-                due_date=today + timedelta(days=14), # Gán sẵn hạn trả 14 ngày để tránh NULL
+                borrow_date=today,           
+                due_date=today + timedelta(days=14),
                 status='pending'
             )
             
@@ -62,14 +62,13 @@ class TransactionListCreateView(APIView):
 
 
 class ReaderTransactionListView(APIView):
-    # 2. GET /api/transactions/me/ : Xem lịch sử mượn cá nhân (FE truyền user_id qua query)
     def get(self, request):
         user_id = request.query_params.get('user_id')
         if not user_id:
             return Response({"error": "Vui lòng truyền user_id"}, status=status.HTTP_400_BAD_REQUEST)
 
         status_param = request.query_params.get('status', None)
-        queryset = Transaction.objects.filter(user_id=user_id).order_by('-id')
+        queryset = Transaction.objects.filter(user_id=user_id).order_by('id')
 
         if status_param:
             queryset = queryset.filter(status=status_param)
@@ -79,7 +78,6 @@ class ReaderTransactionListView(APIView):
 
 
 class ReaderTransactionDetailView(APIView):
-    # 3. GET /api/transactions/me/{id}/ : Xem chi tiết 1 phiếu mượn
     def get(self, request, pk):
         try:
             trans = Transaction.objects.get(pk=pk)
@@ -91,7 +89,6 @@ class ReaderTransactionDetailView(APIView):
 
 
 class ReturnRequestView(APIView):
-    # 4. PUT /api/transactions/{id}/return-request/ : Reader bấm nút "Trả sách"
     def put(self, request, pk):
         try:
             trans = Transaction.objects.get(pk=pk)
@@ -107,7 +104,6 @@ class ReturnRequestView(APIView):
 
 
 class CancelTransactionView(APIView):
-    # 5. DELETE /api/transactions/{id}/cancel/ : Hủy phiếu mượn khi đang ở trạng thái pending
     def delete(self, request, pk):
         try:
             trans = Transaction.objects.get(pk=pk)
@@ -122,7 +118,6 @@ class CancelTransactionView(APIView):
 
 
 class ApproveTransactionView(APIView):
-    # 7. PUT /api/transactions/{id}/approve/ : Staff/Admin duyệt mượn
     def put(self, request, pk):
         try:
             trans = Transaction.objects.get(pk=pk)
@@ -135,7 +130,6 @@ class ApproveTransactionView(APIView):
         details = trans.details.all()
         Book = get_book_model()
 
-        # Nếu model Book đã sẵn sàng thì thực hiện kiểm tra và trừ tồn kho
         if Book is not None:
             for item in details:
                 try:
@@ -159,7 +153,6 @@ class ApproveTransactionView(APIView):
                 trans.status = 'borrowed'
                 trans.save()
         else:
-            # Nếu chưa có model Book thì cập nhật trạng thái phiếu bình thường
             today = timezone.now().date()
             trans.borrow_date = today
             trans.due_date = today + timedelta(days=14)
@@ -170,7 +163,6 @@ class ApproveTransactionView(APIView):
 
 
 class StaffReturnView(APIView):
-    # 8. PUT /api/transactions/{id}/return/ : Staff/Admin duyệt trả sách
     def put(self, request, pk):
         try:
             trans = Transaction.objects.get(pk=pk)
@@ -184,7 +176,6 @@ class StaffReturnView(APIView):
         Book = get_book_model()
 
         with db_transaction.atomic():
-            # Nếu đã có model Book thì hoàn lại số lượng sách vào kho
             if Book is not None:
                 for item in details:
                     try:
@@ -204,7 +195,6 @@ class StaffReturnView(APIView):
 
 
 class ScanOverdueView(APIView):
-    # API phụ: Quét tự động/thủ công các phiếu quá hạn due_date
     def post(self, request):
         today = timezone.now().date()
         updated_count = Transaction.objects.filter(
