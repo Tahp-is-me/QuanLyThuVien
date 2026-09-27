@@ -27,7 +27,15 @@ export function AuthProvider({ children }) {
     setUser(null)
   }
 
-  const value = { user, login, register, logout }
+  // Dùng khi cập nhật hồ sơ (đổi tên/SĐT) để Navbar và các nơi khác
+  // hiển thị đúng ngay mà không cần đăng nhập lại.
+  function updateUser(partial) {
+    const updated = { ...user, ...partial }
+    setStoredUser(updated)
+    setUser(updated)
+  }
+
+  const value = { user, login, register, logout, updateUser }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

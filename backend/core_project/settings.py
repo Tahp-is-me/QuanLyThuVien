@@ -101,6 +101,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
 ]
 
+# Cho phép header tùy chỉnh X-User-ID (dùng để xác thực) đi qua CORS
+from corsheaders.defaults import default_headers
+CORS_ALLOW_HEADERS = list(default_headers) + ["x-user-id"]
+
 # Tránh lỗi CSRF khi gửi API từ React
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",

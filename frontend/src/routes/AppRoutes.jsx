@@ -4,7 +4,6 @@ import PrivateRoute from './PrivateRoute'
 
 import LoginPage from '../features/auth/pages/LoginPage'
 import RegisterPage from '../features/auth/pages/RegisterPage'
-import ReaderHomePage from '../features/reader/pages/ReaderHomePage'
 import StaffHomePage from '../features/staff/pages/StaffHomePage'
 import AdminHomePage from '../features/admin/pages/AdminHomePage'
 
@@ -12,6 +11,7 @@ import BookListPage from '../features/books/pages/BookListPage'
 import BookDetailPage from '../features/books/pages/BookDetailPage'
 import CartPage from '../features/transactions/pages/CartPage'
 import TransactionHistoryPage from '../features/transactions/pages/TransactionHistoryPage'
+import ProfilePage from '../features/profile/pages/ProfilePage'
 
 export default function AppRoutes() {
   return (
@@ -35,17 +35,9 @@ export default function AppRoutes() {
         }
       />
 
-      {/* Khu vực Reader */}
+      {/* Khu vực Reader - trang chủ CHÍNH LÀ danh mục sách (kiểu Shopee) */}
       <Route
         path="/reader"
-        element={
-          <PrivateRoute allowedRoles={['reader']}>
-            <ReaderHomePage />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/reader/books"
         element={
           <PrivateRoute allowedRoles={['reader']}>
             <BookListPage />
@@ -73,6 +65,14 @@ export default function AppRoutes() {
         element={
           <PrivateRoute allowedRoles={['reader']}>
             <TransactionHistoryPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/reader/profile"
+        element={
+          <PrivateRoute allowedRoles={['reader']}>
+            <ProfilePage />
           </PrivateRoute>
         }
       />

@@ -24,9 +24,9 @@ export default function Navbar() {
             <NavLink to="/reader" end>
               Trang chủ
             </NavLink>
-            <NavLink to="/reader/books">Danh mục sách</NavLink>
             <NavLink to="/reader/cart">Giỏ mượn ({cart.totalItems})</NavLink>
             <NavLink to="/reader/history">Lịch sử mượn</NavLink>
+            <NavLink to="/reader/profile">Tài khoản</NavLink>
           </div>
         )}
       </div>

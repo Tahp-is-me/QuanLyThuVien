@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import Navbar from '../../../components/Navbar'
 import { useAuth } from '../../../hooks/useAuth'
 
@@ -14,18 +13,10 @@ export default function ReaderHomePage() {
           Xin chào <strong>{user?.name || user?.username}</strong>, bạn đã đăng nhập
           thành công với vai trò <strong>Reader</strong>.
         </p>
-
-        <div className="quick-links">
-          <Link to="/reader/books" className="quick-link-card">
-            📖 Danh mục sách
-          </Link>
-          <Link to="/reader/cart" className="quick-link-card">
-            🛒 Giỏ mượn
-          </Link>
-          <Link to="/reader/history" className="quick-link-card">
-            🕑 Lịch sử mượn
-          </Link>
-        </div>
+        <p>
+          Đây là trang khởi điểm — các trang tiếp theo (Catalog sách, Chi tiết sách, Giỏ
+          mượn, Lịch sử mượn) sẽ được nối tiếp vào khu vực này.
+        </p>
       </div>
     </div>
   )

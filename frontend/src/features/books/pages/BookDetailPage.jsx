@@ -56,7 +56,7 @@ export default function BookDetailPage() {
     <div>
       <Navbar />
       <div className="page-content">
-        <Link to="/reader/books">← Quay lại danh mục</Link>
+        <Link to="/reader">← Quay lại trang chủ</Link>
 
         {loading && <p>Đang tải...</p>}
         {error && <p className="form-error">{error}</p>}

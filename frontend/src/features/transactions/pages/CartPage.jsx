@@ -41,7 +41,7 @@ export default function CartPage() {
 
         {items.length === 0 ? (
           <p>
-            Giỏ mượn đang trống. <Link to="/reader/books">Xem danh mục sách</Link>
+            Giỏ mượn đang trống. <Link to="/reader">Xem danh mục sách</Link>
           </p>
         ) : (
           <>
