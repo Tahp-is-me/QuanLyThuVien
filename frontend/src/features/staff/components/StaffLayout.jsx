@@ -3,11 +3,10 @@ import Navbar from '../../../components/Navbar'
 import '../../../assets/staff.css'
 
 const MENU = [
-  { path: '', label: 'Tổng quan', icon: '🏠' },
+  { path: '', label: 'Phiếu mượn / trả', icon: '🔄' },
   { path: 'books', label: 'Quản lý sách', icon: '📖' },
   { path: 'authors', label: 'Tác giả', icon: '✍️' },
   { path: 'categories', label: 'Thể loại', icon: '🏷️' },
-  { path: 'transactions', label: 'Phiếu mượn / trả', icon: '🔄' },
 ]
 
 // Layout chung: Header (Navbar có sẵn) + Sidebar + Breadcrumbs + nội dung trang con.

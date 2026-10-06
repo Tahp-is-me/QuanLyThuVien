@@ -149,7 +149,7 @@ export default function StaffBooksPage() {
           >
             <option value="">Tất cả</option>
             <option value="true">Đang công khai</option>
-            <option value="false">Đã ẩn (xóa mềm)</option>
+            <option value="false">Đã ẩn</option>
           </select>
         </label>
       </div>

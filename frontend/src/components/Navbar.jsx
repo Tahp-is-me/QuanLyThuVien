@@ -29,6 +29,25 @@ export default function Navbar() {
             <NavLink to="/reader/profile">Tài khoản</NavLink>
           </div>
         )}
+        {user?.role === 'admin' && (
+          <div className="navbar-links">
+            <NavLink to="/admin" end>
+              Trang chủ
+            </NavLink>
+            <NavLink to="/staff" end>
+              Quản lý thư viện
+            </NavLink>
+            <NavLink to="/admin/profile">Tài khoản</NavLink>
+          </div>
+        )}
+        {user?.role === 'staff' && (
+          <div className="navbar-links">
+            <NavLink to="/staff" end>
+              Quản lý thư viện
+            </NavLink>
+            <NavLink to="/staff/profile">Tài khoản</NavLink>
+          </div>
+        )}
       </div>
 
       {user && (
