@@ -4,7 +4,12 @@ import PrivateRoute from './PrivateRoute'
 
 import LoginPage from '../features/auth/pages/LoginPage'
 import RegisterPage from '../features/auth/pages/RegisterPage'
+import StaffLayout from '../features/staff/components/StaffLayout'
 import StaffHomePage from '../features/staff/pages/StaffHomePage'
+import StaffBooksPage from '../features/staff/pages/StaffBooksPage'
+import StaffAuthorsPage from '../features/staff/pages/StaffAuthorsPage'
+import StaffCategoriesPage from '../features/staff/pages/StaffCategoriesPage'
+import StaffTransactionsPage from '../features/staff/pages/StaffTransactionsPage'
 import AdminHomePage from '../features/admin/pages/AdminHomePage'
 
 import BookListPage from '../features/books/pages/BookListPage'
@@ -77,15 +82,21 @@ export default function AppRoutes() {
         }
       />
 
-      {/* Placeholder cho Hiếu */}
+      {/* Khu vực Staff (Hiếu) - Admin cũng vào được, dùng chung layout + các trang */}
       <Route
         path="/staff"
         element={
           <PrivateRoute allowedRoles={['staff', 'admin']}>
-            <StaffHomePage />
+            <StaffLayout basePath="/staff" />
           </PrivateRoute>
         }
-      />
+      >
+        <Route index element={<StaffHomePage />} />
+        <Route path="books" element={<StaffBooksPage />} />
+        <Route path="authors" element={<StaffAuthorsPage />} />
+        <Route path="categories" element={<StaffCategoriesPage />} />
+        <Route path="transactions" element={<StaffTransactionsPage />} />
+      </Route>
 
       {/* Placeholder cho Khoa */}
       <Route
