@@ -121,13 +121,11 @@ class ChangeUserRoleView(APIView):
         if new_role not in ['reader', 'staff', 'admin']:
             return Response({"error": "Role không hợp lệ. Chỉ chấp nhận: reader, staff, admin."}, status=status.HTTP_400_BAD_REQUEST)
 
-        previous_role = user.role
         user.role = new_role
         user.save()
 
         return Response({
             "message": f"Cập nhật quyền thành công! Vai trò mới: {new_role}",
-            "previous_role": previous_role,
             "user": UserListSerializer(user).data
         }, status=status.HTTP_200_OK)
 
