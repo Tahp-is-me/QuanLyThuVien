@@ -1,0 +1,1409 @@
+/* =========================================================
+   ADMIN LAYOUT
+   ========================================================= */
+
+.admin-shell {
+  min-height: 100vh;
+  display: flex;
+  background: #f5f6fa;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.admin-sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: #1f2937;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.admin-logo {
+  padding: 10px 15px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-logo-icon {
+  font-size: 28px;
+}
+
+.admin-logo strong {
+  display: block;
+  font-size: 18px;
+}
+
+.admin-logo span {
+  display: block;
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.admin-menu-title {
+  margin: 25px 15px 10px;
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.admin-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* NavLink trong AdminLayout.jsx */
+
+.admin-sidebar-link {
+  color: #d1d5db;
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+}
+
+.admin-sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.admin-sidebar-link.active {
+  background: #2563eb;
+  color: white;
+}
+
+/* Phần cuối Sidebar */
+
+.admin-sidebar-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-logout {
+  justify-content: flex-start;
+}
+
+.admin-logout:hover {
+  background: #b91c1c;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.admin-header {
+  min-height: 75px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-sizing: border-box;
+}
+
+.admin-header-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.admin-header-subtitle {
+  margin-top: 5px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   ADMIN ACCOUNT HEADER
+   ========================================================= */
+
+.admin-account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.admin-account strong {
+  display: block;
+  font-size: 14px;
+}
+
+.admin-account span {
+  display: block;
+  color: #6b7280;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.admin-content {
+  padding: 30px;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
+
+.admin-page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.admin-page-heading h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #111827;
+}
+
+.admin-page-heading p {
+  margin: 7px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.admin-heading-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.admin-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.admin-btn:hover {
+  opacity: 0.9;
+}
+
+.admin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-btn.primary {
+  background: #2563eb;
+  color: white;
+}
+
+.admin-btn.secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.admin-btn.success {
+  background: #16a34a;
+  color: white;
+}
+
+.admin-btn.danger {
+  background: #dc2626;
+  color: white;
+}
+
+
+/* =========================================================
+   OLD BUTTON CLASSES
+   ========================================================= */
+
+.admin-button {
+  border: none;
+  border-radius: 7px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.admin-button-primary {
+  background: #2563eb;
+  color: white;
+}
+
+.admin-button-success {
+  background: #16a34a;
+  color: white;
+}
+
+.admin-button-danger {
+  background: #dc2626;
+  color: white;
+}
+
+.admin-button-secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+
+/* =========================================================
+   ALERT
+   ========================================================= */
+
+.admin-alert {
+  padding: 13px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.admin-alert.success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-alert.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.admin-alert.info {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.admin-alert button {
+  float: right;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  color: inherit;
+}
+
+
+/* =========================================================
+   DASHBOARD STAT
+   ========================================================= */
+
+.admin-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.admin-stat-card {
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.admin-stat-card.danger {
+  border-color: #fecaca;
+}
+
+.admin-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.admin-stat-card.danger .admin-stat-icon {
+  background: #fef2f2;
+}
+
+.admin-stat-info {
+  min-width: 0;
+}
+
+.admin-stat-info span {
+  display: block;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.admin-stat-info strong {
+  display: block;
+  margin-top: 7px;
+  font-size: 28px;
+  color: #111827;
+}
+
+/* Tương thích class cũ */
+
+.admin-stat-card h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.admin-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 22px;
+  margin-bottom: 20px;
+}
+
+.admin-card h3 {
+  margin-top: 0;
+}
+
+.admin-card h2 {
+  margin-top: 0;
+}
+
+.admin-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.admin-welcome-card {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.admin-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.admin-welcome-card h2 {
+  margin: 0 0 8px;
+  font-size: 19px;
+}
+
+.admin-welcome-card p {
+  margin: 0 0 12px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.admin-text-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.admin-text-link:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   DASHBOARD QUICK ACTION
+   ========================================================= */
+
+.admin-card-title-row {
+  margin-bottom: 18px;
+}
+
+.admin-card-title-row h2 {
+  margin: 0 0 7px;
+}
+
+.admin-card-title-row p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.admin-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.admin-quick-action {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #111827;
+  transition: 0.2s;
+}
+
+.admin-quick-action:hover {
+  background: #f9fafb;
+  border-color: #2563eb;
+}
+
+.admin-quick-action span {
+  font-size: 24px;
+}
+
+.admin-quick-action small {
+  color: #6b7280;
+}
+
+
+/* =========================================================
+   LIBRARY
+   ========================================================= */
+
+.admin-library-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.admin-library-box {
+  text-align: center;
+}
+
+.admin-library-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.admin-library-box h2 {
+  margin-bottom: 8px;
+}
+
+.admin-library-box p {
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.admin-table-wrapper,
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 13px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.admin-table th {
+  background: #f9fafb;
+  font-size: 13px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.admin-table td {
+  font-size: 14px;
+  color: #374151;
+}
+
+.admin-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.admin-table th.align-right,
+.admin-table td.align-right {
+  text-align: right;
+}
+
+
+/* =========================================================
+   OLD BADGES
+   ========================================================= */
+
+.admin-badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.admin-badge-active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-badge-locked {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.admin-badge-reader {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.admin-badge-staff {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+
+/* =========================================================
+   FILTER
+   ========================================================= */
+
+.admin-filter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.admin-filter select {
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+}
+
+
+/* =========================================================
+   USER MANAGEMENT
+   ========================================================= */
+
+.admin-user-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.admin-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 18px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-search-wrap {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0 12px;
+  background: white;
+}
+
+.admin-search-wrap span {
+  color: #6b7280;
+  font-size: 20px;
+}
+
+.admin-search-wrap input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.admin-toolbar select {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  outline: none;
+}
+
+.admin-result-count {
+  color: #6b7280;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.admin-empty {
+  text-align: center;
+  padding: 35px !important;
+  color: #6b7280;
+}
+
+.admin-role-label {
+  margin-top: 4px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   ACCOUNT SUMMARY
+   ========================================================= */
+
+/*
+   Tất cả thống kê nằm trên 1 hàng:
+   Tổng tài khoản | Administrator | Staff | Reader | Hiển thị
+*/
+
+/* =========================================================
+   ACCOUNT SUMMARY - 1 DÒNG CÂN ĐỐI
+   ========================================================= */
+
+.admin-account-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 20px;
+  background: #fbfcfe;
+  border-bottom: 1px solid #e6ebf1;
+  min-height: 68px;
+  box-sizing: border-box;
+}
+
+/* Tổng tài khoản */
+.admin-account-total {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.admin-account-total span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  letter-spacing: 0.4px;
+}
+
+.admin-account-total strong {
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Các role */
+.admin-role-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-role-summary > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+/* Chấm tròn */
+.admin-role-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.admin-role-dot.administrator {
+  background: #7c3aed;
+}
+
+.admin-role-dot.staff {
+  background: #2563eb;
+}
+
+.admin-role-dot.reader {
+  background: #10b981;
+}
+
+/* Chữ Administrator / Staff / Reader */
+.admin-role-summary span:not(.admin-role-dot) {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Số lượng của từng role */
+.admin-role-summary strong {
+  min-width: 24px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  background: #eef2f7;
+  border-radius: 6px;
+}
+
+/* Hiển thị X / Y tài khoản */
+.admin-filtered-count {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+  color: #829ab1;
+}
+
+.admin-filtered-count strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+}
+
+/* Chấm màu role */
+
+.admin-role-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.admin-role-dot.administrator {
+  background: #7c3aed;
+}
+
+.admin-role-dot.staff {
+  background: #2563eb;
+}
+
+.admin-role-dot.reader {
+  background: #16a34a;
+}
+
+/* Hiển thị X / Y */
+
+.admin-filtered-count {
+  flex-shrink: 0;
+  color: #829ab1;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.admin-filtered-count strong {
+  color: #243b53;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   USER STATUS
+   ========================================================= */
+
+.admin-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.admin-status.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-status.active i {
+  background: #16a34a;
+}
+
+.admin-status.locked {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.admin-status.locked i {
+  background: #dc2626;
+}
+
+
+/* =========================================================
+   ROLE BADGE
+   ========================================================= */
+
+.admin-role-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.admin-role-badge.admin {
+  color: #6d28d9;
+  background: #f3e8ff;
+}
+
+.admin-role-badge.staff {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.admin-role-badge.reader {
+  color: #087443;
+  background: #ecfdf3;
+}
+
+
+/* =========================================================
+   USER ROW ACTIONS
+   ========================================================= */
+
+.admin-row-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.admin-action {
+  border: none;
+  border-radius: 6px;
+  padding: 7px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.admin-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-action.view {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.admin-action.lock {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.admin-action.unlock {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-action.promote {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.admin-action.role {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.admin-modal-overlay,
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.admin-modal {
+  width: 100%;
+  max-width: 550px;
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-sizing: border-box;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.admin-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.admin-modal-kicker {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.admin-modal-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.admin-modal-close {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 25px;
+  color: #6b7280;
+  line-height: 1;
+}
+
+.admin-modal-close:hover {
+  color: #111827;
+}
+
+
+/* =========================================================
+   USER DETAIL
+   ========================================================= */
+
+.admin-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.admin-detail-item {
+  padding: 13px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.admin-detail-item span {
+  display: block;
+  color: #6b7280;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.admin-detail-item strong {
+  font-size: 14px;
+  color: #111827;
+}
+
+
+/* Class cũ */
+
+.admin-detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+
+/* =========================================================
+   CHANGE ROLE MODAL
+   ========================================================= */
+
+.admin-role-form {
+  padding: 22px;
+}
+
+.admin-role-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #e6ebf1;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.admin-role-current span {
+  color: #627d98;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-role-form label {
+  display: block;
+  margin-bottom: 7px;
+  color: #334e68;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-role-form select {
+  width: 100%;
+  height: 42px;
+  border: 1px solid #d9e2ec;
+  border-radius: 7px;
+  padding: 0 12px;
+  background: #fff;
+  color: #243b53;
+  outline: none;
+}
+
+.admin-role-form select:focus {
+  border-color: #2563eb;
+}
+
+.admin-role-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+
+/* =========================================================
+   LOADING / ERROR
+   ========================================================= */
+
+.admin-loading {
+  padding: 30px;
+  text-align: center;
+}
+
+.admin-error {
+  padding: 15px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   LINK CARD
+   ========================================================= */
+
+.admin-link-card {
+  display: block;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 15px;
+}
+
+.admin-link-card:hover {
+  background: #f9fafb;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .admin-account-summary {
+    gap: 20px;
+  }
+
+  .admin-role-summary {
+    gap: 22px;
+  }
+
+  .admin-account-total {
+    min-width: 165px;
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .admin-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-library-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /*
+    Khi màn hình nhỏ hơn 1100px,
+    phần thống kê vẫn cố giữ một hàng.
+  */
+  .admin-account-summary {
+    gap: 16px;
+  }
+
+  .admin-account-total {
+    min-width: 155px;
+  }
+
+  .admin-role-summary {
+    gap: 18px;
+  }
+
+  .admin-role-summary > div {
+    font-size: 11px;
+  }
+
+  .admin-filtered-count {
+    font-size: 11px;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .admin-account-summary {
+    flex-wrap: wrap;
+  }
+
+  .admin-account-total {
+    min-width: auto;
+  }
+
+  .admin-role-summary {
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  .admin-filtered-count {
+    margin-left: auto;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .admin-sidebar {
+    width: 210px;
+  }
+
+  .admin-content {
+    padding: 20px;
+  }
+
+  .admin-header {
+    padding: 15px 20px;
+  }
+
+  .admin-page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-heading-actions {
+    width: 100%;
+  }
+
+  .admin-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-account-summary {
+    gap: 15px;
+  }
+
+  .admin-role-summary {
+    gap: 15px;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .admin-sidebar {
+    width: 190px;
+  }
+
+  .admin-content {
+    padding: 15px;
+  }
+
+  .admin-header {
+    padding: 15px;
+  }
+
+  .admin-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-account-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .admin-role-summary {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .admin-filtered-count {
+    margin-left: 0;
+  }
+
+  .admin-quick-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 550px) {
+  .admin-shell {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .admin-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .admin-sidebar-link {
+    width: auto;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .admin-sidebar-bottom {
+    margin-top: 15px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .admin-account {
+    width: 100%;
+  }
+
+  .admin-toolbar {
+    align-items: stretch;
+  }
+
+  .admin-search-wrap {
+    min-width: 100%;
+  }
+
+  .admin-toolbar select {
+    flex: 1;
+  }
+
+  .admin-role-summary {
+    gap: 12px;
+  }
+
+  .admin-role-summary > div {
+    font-size: 11px;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 10px 8px;
+  }
+}

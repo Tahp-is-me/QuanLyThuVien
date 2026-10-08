@@ -9,7 +9,11 @@ import StaffHomePage from '../features/staff/pages/StaffHomePage'
 import StaffBooksPage from '../features/staff/pages/StaffBooksPage'
 import StaffAuthorsPage from '../features/staff/pages/StaffAuthorsPage'
 import StaffCategoriesPage from '../features/staff/pages/StaffCategoriesPage'
+import StaffTransactionsPage from '../features/staff/pages/StaffTransactionsPage'
+import AdminLayout from '../features/admin/components/AdminLayout'
 import AdminHomePage from '../features/admin/pages/AdminHomePage'
+import AdminLibraryPage from '../features/admin/pages/AdminLibraryPage'
+import UserManagementPage from '../features/admin/pages/UserManagementPage'
 
 import BookListPage from '../features/books/pages/BookListPage'
 import BookDetailPage from '../features/books/pages/BookDetailPage'
@@ -102,19 +106,32 @@ export default function AppRoutes() {
       >
         <Route index element={<StaffHomePage />} />
         <Route path="books" element={<StaffBooksPage />} />
+        <Route path="borrowing" element={<StaffTransactionsPage />} />
         <Route path="authors" element={<StaffAuthorsPage />} />
         <Route path="categories" element={<StaffCategoriesPage />} />
-      </Route>
+      </Route>  
 
-      {/* Placeholder cho Khoa */}
+      {/* Khu vực Admin - Khoa */}
       <Route
         path="/admin"
         element={
           <PrivateRoute allowedRoles={['admin']}>
-            <AdminHomePage />
+            <AdminLayout />
           </PrivateRoute>
         }
-      />
+      >
+        <Route index element={<AdminHomePage />} />
+
+        <Route
+          path="users"
+          element={<UserManagementPage />}
+        />
+
+        <Route
+          path="library"
+          element={<AdminLibraryPage />}
+        />
+      </Route>
       {/* Hiếu: Admin sửa thông tin tài khoản - dùng lại ProfilePage của Phong */}
       <Route
         path="/admin/profile"

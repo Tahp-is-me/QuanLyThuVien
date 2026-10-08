@@ -3,7 +3,7 @@ import Navbar from '../../../components/Navbar'
 import '../../../assets/staff.css'
 
 const MENU = [
-  { path: '', label: 'Phiếu mượn / trả', icon: '🔄' },
+  { path: 'borrowing', label: 'Phiếu mượn / trả', icon: '🔄' },
   { path: 'books', label: 'Quản lý sách', icon: '📖' },
   { path: 'authors', label: 'Tác giả', icon: '✍️' },
   { path: 'categories', label: 'Thể loại', icon: '🏷️' },
