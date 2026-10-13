@@ -142,6 +142,12 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  min-height: 420px;                       /* MỚI */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;  /* MỚI */
+}
+.book-card:hover {                         /* MỚI (cả block) */
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
 }
 .book-card-image img {
   width: 100%;
@@ -162,16 +168,19 @@ body {
   font-size: 64px;
 }
 .book-card-body {
-  padding: 14px;
+  flex: 1;                                 /* MỚI */
+  padding: 14px 12px 12px;                 /* ĐỔI: trước là 14px */
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 .book-card-title {
   font-weight: 700;
+  line-height: 1.35;                       /* MỚI */
   color: #1e293b;
   text-decoration: none;
   margin-bottom: 4px;
+  min-height: calc(1.35em * 3);            /* MỚI */
 }
 .book-card-meta {
   font-size: 13px;
@@ -179,7 +188,14 @@ body {
   margin: 0;
 }
 .book-card-body button {
-  margin-top: 8px;
+  margin-top: auto;                        /* ĐỔI: trước là 8px */
+  width: 100%;                             /* MỚI */
+  transition: background-color 0.2s ease, transform 0.15s ease;  /* MỚI */
+}
+.book-card-body button:not(:disabled):hover {   /* MỚI (cả block) */
+  background: #fdebc8;
+  color: #7a4b00;
+  transform: translateY(-1px);
 }
 
 /* ===== Phân trang ===== */
